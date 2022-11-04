@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        .navlabel{
+            padding-left: 30px;
+            padding-right: 30px;
+            color:gray;
+        }
+        .navstyle{
+            position: fixed;
+            width: 100%; 
+            z-index: 999;
+        }
+        .navcontainer{
+            justify-content: space-between;
+            flex-wrap: nowrap; 
+            min-width: 1000px;
+        }
+        .song-container{
+            display: flex; 
+            flex-direction:column; 
+            padding-left: 100px;
+            padding-right: 100px;
+            padding-top: 60px; 
+            background-color: bisque;
+        }
+        .song-container-head{
+            display: flex; 
+            flex-direction: row;
+            text-align: center; 
+            justify-content: space-between; 
+            background-color:green
+        }
+        .page-button{
+            width:50px; 
+            height:80%; 
+            margin-top:5%;
+        }
+        .song-list-container{
+            display: flex; 
+            flex-direction:row; 
+            flex-wrap: wrap; 
+            height: 300px; 
+            background-color:aqua;
+        }
+        .song-list-container-item{
+            flex:1 1 40%;
+            max-width: 47%;
+            align-self: center; 
+            flex-grow:1; 
+            margin:10px;
+        }
+    </style>
+    <script>
+        function search(){
+            $('#nav-search').show()
+            $('#nav-main').hide()
+        }
+        function close_search(){
+            $('#nav-search').hide()
+            $('#nav-main').show()
+        }
+
+        $('html').click(function(e) {   
+            if(!$(e.target).hasClass("area")) {
+                $('#nav-search').hide()
+                $('#nav-main').show()
+            }
+        });  
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navstyle">
+        <div class="container-fluid navcontainer">
+            <a class="navbar-brand" href="main">
+                <img style="width: 100px" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
+            </a>
+            <div id="nav-search" style="display:none">
+                <input class="form-control me-2 area" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            <div id="nav-main" class="me-2">
+                <label class="navlabel">홈</label>
+                <label class="navlabel">둘러보기</label>
+                <label class="navlabel">보관함</label>
+                <label class="navlabel area" onclick="search()">검색</label>
+
+            </div>
+
+            <div style="display: flex">
+                <a href="main" style="color: white"><span class="material-icons"
+                                                          style="padding-right: 10px"> home</span></a>
+                <span id="nav_bar_add_box" class="material-icons-outlined" style="padding-right: 10px">add_box</span>
+    
+                <div class="dropdown">
+                    <a href="#" role="button" id="dropdownMenuLink"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="box" style="width: 25px; height: 25px">
+    
+                            <img class="profile"
+                                 src="">
+    
+                        </div>
+                    </a>
+    
+                    <ul class="dropdown-menu" style="left:-158px" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="/content/profile">프로필</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/user/logout">로그아웃</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="song-container">
+        <div class="song-container-head">
+            <div>
+                <div style="background-color: red;text-align:left;">
+                    OOO 님의 추천곡 리스트
+                </div>
+                <div style="background-color: yellow;text-align:left;">
+                    <h3>추천곡</h3>
+                </div>
+            </div>
+            <div>
+            </div>
+            <div>
+                <button class="page-button">왼</button>
+                <button class="page-button">오</button>
+            </div>
+        </div>
+        <div class="song-list-container">
+
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+        </div>
+            
+            
+            
+    </div>
+    <div class="song-container">
+        <div class="song-container-head">
+            <div>
+                <div style="background-color: red;text-align:left;">
+                    OOO 님의 플레이리스트
+                </div>
+                <div style="background-color: yellow;text-align:left;">
+                    <h3>내 곡 목록</h3>
+                </div>
+            </div>
+            <div>
+            </div>
+            <div>
+                <button class="page-button">왼</button>
+                <button class="page-button">오</button>
+            </div>
+        </div>
+        <div class="song-list-container">
+
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 song-list-container-item">
+                <div class="row g-0" style="height:60px">
+                    <div class="col-md-4">
+                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">노래 제목</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+        </div>
+            
+            
+            
+    </div>
+</div>
+</body>
+</html>
