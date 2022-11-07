@@ -1,0 +1,110 @@
+body {
+    background-color: white;
+    height: 100%
+}
+
+section {
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin_top {
+    background-color: white;
+    width: 460px;
+    height: 510px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    margin-top: 100px;
+    padding: 48px 40px 36px;
+}
+
+.logo {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span:nth-child(1){
+    color: #4285f4;
+}
+
+.logo span:nth-child(2){
+    color: #ea4335;
+}
+
+.logo span:nth-child(3){
+    color: #fbbc05;
+}
+
+.logo span:nth-child(4){
+    color: #4285f4;
+}
+
+.logo span:nth-child(5){
+    color: #34a853;
+}
+
+.logo span:nth-child(6){
+    color: #ea4335;
+}
+
+h1 {
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.signin_img {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.floating_label {
+    margin-top: -4px;
+    font-size: 14px;
+}
+
+.floating_input {
+    height: 50px !important;
+    padding-top: 20px !important;
+    font-size: 14px !important;
+}
+
+.tab {
+    margin-top: 110px;
+}
+
+.signup {
+    float: left;
+    margin-top: 5px;
+}
+
+.btn-primary {
+    float: right;
+    width: 20%
+}
+
+.a_1 {
+    font-weight: bold;
+    color: #00376B;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.a_2 {
+    font-weight: bold;
+    color: cornflowerblue;
+    text-decoration: none;
+    cursor: pointer
+}
