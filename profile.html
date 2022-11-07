@@ -11,6 +11,9 @@
 
     <!-- CSS -->
     <link href="../static/css/profile.css" rel="stylesheet" type="text/css" />
+    <!-- js -->
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/profile.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
@@ -20,47 +23,177 @@
 </head>
 
 <body>
-<!-- Header -->
-<header>
-    <div class="logo">
-        <i class="fab fa-youtube"></i>
-        <span class="title">DlcMusic</span>
-    </div>
-    <button class="logout">
-        <a href="/">Logout</a>
-    </button>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fab fa-youtube"></i>
+            <span class="title">DlcMusic</span>
+        </div>
+        <button class="logout">
+            <a href="signin.html" onclick="handleLogout()">Logout</a>
+        </button>
+    </header>
     <!-- Section -->
     <section class="profile">
         <div class="img_area">
             <div class="profile_image">
-                <img src="https://intermusicakorea.com/common/img/default_profile.png">
+                <img src="../static/images/default_profile.png">
             </div>
         </div>
 
         <div class="profile-user-settings">
 
-            <h1 class="profile-user-name">semin_</h1>
+            <h1 class="profile-user-name" id="username"></h1>
 
-            <button class="btn profile-edit-btn">Edit Profile</button>
+            <button class="btn profile-edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Profile</button>
 
         </div>
 
         <div class="profile-stats">
 
             <ul>
-                <li><span class="profile-stat-count">188</span> followers</li>
-                <li><span class="profile-stat-count">206</span> following</li>
+                <li><span class="profile-stat-count" id="followers"></span> followers</li>
+                <li><span class="profile-stat-count" id="followings"></span> followings</li>
             </ul>
 
         </div>
-
-        <div class="profile-bio">
-            <p>semin@semin.com</p>
-            <p>자기소개가 들어갑니다.</p>
-
-        </div>
+        <div class="profile-email" id="email"></div>
+        <div class="profile-bio" id="bio"></div>
     </section>
+    <div class="song-container">
+        <div class="song-container-head">
+            <div>
+                <div><span id="username2"></span>님의 추천곡 리스트</div>
+                <div style="text-align:left;">
+                    <h3>좋아요 목록</h3>
+                </div>
+            </div>
+            <div>
+            </div>
+            <div>
+                <button class="page-button" id="carousel-prev">왼</button>
+                <button class="page-button" id="carousel-next">오</button>
+            </div>
+        </div>
+        <div class="song-list-container" id="song-list-container">
+
+            <div id="wrapper">
+                <div id="carousel">
+                    <div id="content">
+                        <div style="display:flex;flex-direction: column;">
+                            <div>
+                                <img class="item"
+                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
+                            </div>
+                            <div>
+                                <p style="color:white">sdklfj</p>
+                            </div>
+
+                        </div>
+                        <div style="display:flex;flex-direction: column;">
+                            <div>
+                                <img class="item"
+                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
+                            </div>
+                            <div>
+                                <p style="color:white">노래제목</p>
+                            </div>
+                            <div>
+                                <p style="color:white">가수</p>
+                            </div>
+
+                        </div>
+                        <div style="display:flex;flex-direction: column;">
+                            <div>
+                                <img class="item"
+                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
+                            </div>
+                            <div>
+                                <p style="color:white">sdklfj</p>
+                            </div>
+
+                        </div>
+                        <div style="display:flex;flex-direction: column;">
+                            <div>
+                                <img class="item"
+                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
+                            </div>
+                            <div>
+                                <p style="color:white">sdklfj</p>
+                            </div>
+
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
+                            class="item" />
+                        <img class="item"
+                            src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
+                        <img src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
+                            class="item" />
+                        <img src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
+                            class="item" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">프로필 수정</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">email</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">bio</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                        <input name="image" type="file">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="ProfileUpdate()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
