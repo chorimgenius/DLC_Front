@@ -46,13 +46,13 @@
             height:80%; 
             margin-top:5%;
         }
-        .song-list-container{
+        /* .song-list-container{
             display: flex; 
             flex-direction:row; 
             flex-wrap: wrap; 
             height: 300px; 
             background-color:aqua;
-        }
+        } */
         .song-list-container-item{
             flex:1 1 40%;
             max-width: 47%;
@@ -60,24 +60,71 @@
             flex-grow:1; 
             margin:10px;
         }
-    </style>
-    <script>
-        function search(){
-            $('#nav-search').show()
-            $('#nav-main').hide()
-        }
-        function close_search(){
-            $('#nav-search').hide()
-            $('#nav-main').show()
+        #song-list-container {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #000;
         }
 
-        $('html').click(function(e) {   
-            if(!$(e.target).hasClass("area")) {
-                $('#nav-search').hide()
-                $('#nav-main').show()
-            }
-        });  
-    </script>
+        #wrapper {
+            width: 100%;
+            max-width: 964px;
+            position: relative;
+        }
+
+        #carousel {
+            overflow: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        #carousel::-webkit-scrollbar {
+            height: 0;
+        }
+        /* #next {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            background: white;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            outline: 0;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        #prev {
+            top: 50%;
+            left: 0;
+            transform: translate(50%, -50%);
+            display: none;
+        } */
+
+        #next {
+            top: 50%;
+            right: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        #content {
+            display: grid;
+            grid-gap: 16px;
+            grid-auto-flow: column;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        .item {
+            width: 180px;
+            height: 180px;
+            background: green;
+        }
+    </style>
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navstyle">
@@ -136,71 +183,146 @@
             <div>
             </div>
             <div>
-                <button class="page-button">왼</button>
-                <button class="page-button">오</button>
+                <button class="page-button" id="carousel-prev">왼</button>
+                <button class="page-button" id="carousel-next">오</button>
             </div>
         </div>
-        <div class="song-list-container">
+        <div class="song-list-container" id="song-list-container">
 
-            <div class="card mb-3 song-list-container-item">
-                <div class="row g-0" style="height:60px">
-                    <div class="col-md-4">
-                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
+            <div id="wrapper">
+                <div id="carousel">
+                  <div id="content">
+                    <div style="display:flex;flex-direction: column;">
+                      <div>
+                        <img
+                          class="item"
+                          src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+                        />
+                      </div>
+                      <div>
+                        <p style="color:white">sdklfj</p>
+                      </div>
+                    
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">노래 제목</h5>
-                        </div>
+                    <div style="display:flex;flex-direction: column;">
+                      <div>
+                        <img
+                          class="item"
+                          src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+                        />
+                      </div>
+                      <div>
+                        <p style="color:white">노래제목</p>
+                      </div>
+                      <div>
+                        <p style="color:white">가수</p>
+                      </div>
+                    
                     </div>
+                    <div style="display:flex;flex-direction: column;">
+                      <div>
+                        <img
+                          class="item"
+                          src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+                        />
+                      </div>
+                      <div>
+                        <p style="color:white">sdklfj</p>
+                      </div>
+                    
+                    </div>
+                    <div style="display:flex;flex-direction: column;">
+                      <div>
+                        <img
+                          class="item"
+                          src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+                        />
+                      </div>
+                      <div>
+                        <p style="color:white">sdklfj</p>
+                      </div>
+                    
+                    </div>
+                    <img
+                      src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      class="item"
+                      src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
+                      class="item"
+                    />
+                    <img
+                      src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
+                      class="item"
+                    />
+                  </div>
                 </div>
-            </div>
-            <div class="card mb-3 song-list-container-item">
-                <div class="row g-0" style="height:60px">
-                    <div class="col-md-4">
-                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">노래 제목</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-3 song-list-container-item">
-                <div class="row g-0" style="height:60px">
-                    <div class="col-md-4">
-                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">노래 제목</h5>
-                        </div>
-                    </div>
-                </div>
-            </div><div class="card mb-3 song-list-container-item">
-                <div class="row g-0" style="height:60px">
-                    <div class="col-md-4">
-                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">노래 제목</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-3 song-list-container-item">
-                <div class="row g-0" style="height:60px">
-                    <div class="col-md-4">
-                        <img src="http://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg" style="height:60px;" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">노래 제목</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              </div>
+
       
         </div>
             
@@ -293,4 +415,47 @@
     </div>
 </div>
 </body>
+<script>
+    function search(){
+        $('#nav-search').show()
+        $('#nav-main').hide()
+    }
+    function close_search(){
+        $('#nav-search').hide()
+        $('#nav-main').show()
+    }
+
+    $('html').click(function(e) {   
+        if(!$(e.target).hasClass("area")) {
+            $('#nav-search').hide()
+            $('#nav-main').show()
+        }
+    });  
+    const gap = 16;
+
+    const carousel = document.getElementById("carousel"),
+    content = document.getElementById("content"),
+    next = document.getElementById("carousel-next"),
+    prev = document.getElementById("carousel-prev");
+
+    carousel-next.addEventListener("click", e => {
+        console.log('sldfkjdsklj')
+        carousel.scrollBy(width + gap, 0);
+        if (carousel.scrollWidth !== 0) {
+        }
+        if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+        }
+    });
+    carousel-prev.addEventListener("click", e => {
+    carousel.scrollBy(-(width + gap), 0);
+    if (carousel.scrollLeft - width - gap <= 0) {
+    }
+    if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    }
+    });
+
+
+    let width = carousel.offsetWidth;
+    window.addEventListener("resize", e => (width = carousel.offsetWidth));
+</script>
 </html>
