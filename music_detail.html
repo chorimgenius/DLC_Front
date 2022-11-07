@@ -33,24 +33,27 @@
 
         <div class="user-comment">
             <div class="comments-section">
-               <div class="comment-post">
-                  <div class="comment-img"><img src="https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png"/></div>
-                  <div class="comment-details">
-                     <p><span class="comment-author">Comment 달은 유저</span><span class="comment-time">5 minutes ago</span></p>
-                     <div>
-                     <p class="comment-content">노래가 너무 좋습니다.</p>
-                    </div>
-                     <div class="comment-like-unlike">
-                        <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
-                        <span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></span>
-                        <span><i class="fa fa-reply" aria-hidden="true"></i></span>
+               <div id="comment_list">
+                  <div class="comment-post">
+                     <div class="comment-img"><img src="https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png"/></div>
+                     <div class="comment-details">
+                        <p><span class="comment-author">Comment 달은 유저</span><span class="comment-time">5 minutes ago</span></p>
+                        <div>
+                        <p class="comment-content">노래가 너무 좋습니다.</p>
+                     </div>
+                        <div class="comment-like-unlike">
+                           <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
+                           <span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></span>
+                           <span><i class="fa fa-reply" aria-hidden="true"></i></span>
+                        </div>
                      </div>
                   </div>
                </div>
                <div class="comment-add">
                   <div class="field-comment">
-                     <textarea rows="4" cols="50"></textarea>
-                     <a class="btn btn--blue btn--medium pull-right" href="#">Music Comment</a>
+                     <input id="review_rank" type="number"></input>
+                     <textarea id="review_content" rows="4" cols="50"></textarea>
+                     <button onclick="review_write" class="btn btn--blue btn--medium pull-right" href="#">Music Comment</button>
                   </div>
                </div>
             </div>

@@ -90,6 +90,46 @@ function close_search(){
     $('#nav-main').show()
 }
 
+async function review_write(){
+    const urlStr = window.location.href;
+    console.log(urlStr)
+
+    const url = new URL(urlStr);
+
+    const urlParams = url.searchParams;
+
+    const id = urlParams.get('id')
+
+    const response = await fetch('http://127.0.0.1:8000/'+parseInt(id)+'/review/', {method:'POST'})
+
+    response_json = await response.json()
+    
+    user = response_json.user 
+    contents = response_json.contents  
+    image = response_json.image 
+    rank = response_json.rank
+
+    const comment = `<div class="comment-post">
+                        <div class="comment-img"><img src="${user.image}"/></div>
+                        <div class="comment-details">
+                            <p><span class="comment-author">${user.username}</span><span class="comment-time">${rank}</span></p>
+                        <div>
+                            <p class="comment-content">${contents}</p>
+                        </div>
+                    </div>`
+
+    comments.insertAdjacentHTML("beforeend",comment)
+}
+
+
+
+
+
+
+
+
+
+
 $('html').click(function(e) {   
     if(!$(e.target).hasClass("area")) {
         $('#nav-search').hide()
@@ -102,3 +142,4 @@ likeButton.addEventListener('click', () => {
 likeButton.classList.toggle('selected');
 });
 });
+
