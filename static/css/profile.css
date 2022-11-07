@@ -71,6 +71,7 @@ header button a {
 
 .profile-user-settings,
 .profile-stats,
+.profile-email,
 .profile-bio {
     float: center;
 }
@@ -105,6 +106,10 @@ header button a {
     margin-top: 2rem;
 }
 
+.profile-stats ul{
+    padding: 0px;
+}
+
 .profile-stats li {
     display: inline-block;
     font-size: 1.6rem;
@@ -117,6 +122,13 @@ header button a {
     margin-right: 0;
 }
 
+.profile-email {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 2rem;
+}
+
 .profile-bio {
     font-size: 1.6rem;
     font-weight: 400;
@@ -127,4 +139,106 @@ header button a {
 .profile-stat-count,
 .profile-edit-btn {
     font-weight: 600;
+}
+
+.song-container{
+    display: flex; 
+    flex-direction:column; 
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 60px; 
+}
+.song-container-head{
+    display: flex; 
+    flex-direction: row;
+    text-align: center; 
+    justify-content: space-between; 
+}
+.page-button{
+    width:50px; 
+    height:80%; 
+    margin-top:5%;
+}
+/* .song-list-container{
+    display: flex; 
+    flex-direction:row; 
+    flex-wrap: wrap; 
+    height: 300px; 
+    background-color:aqua;
+} */
+.song-list-container-item{
+    flex:1 1 40%;
+    max-width: 47%;
+    align-self: center; 
+    flex-grow:1; 
+    margin:10px;
+}
+#song-list-container {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #000;
+}
+
+#wrapper {
+    width: 100%;
+    max-width: 964px;
+    position: relative;
+}
+
+#carousel {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+#carousel::-webkit-scrollbar {
+    height: 0;
+}
+/* #next {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: white;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+#prev {
+    top: 50%;
+    left: 0;
+    transform: translate(50%, -50%);
+    display: none;
+} */
+
+#next {
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+}
+
+#content {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.item {
+    width: 180px;
+    height: 180px;
+    background: green;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #f80101;
+    border: 0.1rem solid #f80101;
 }
