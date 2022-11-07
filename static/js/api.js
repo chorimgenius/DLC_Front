@@ -1,3 +1,5 @@
+const backend_base_url = "http://127.0.0.1:8000"
+
 window.onload = ()=>{
     console.log("로딩되었음")
 }
@@ -30,7 +32,7 @@ async function handleSignup(){
     //     return 0;
     // }
 
-    const response = await fetch('http://127.0.0.1:8000/user/signup/', {
+    const response = await fetch(`${backend_base_url}/user/signup`, {
         headers: {
             'content-type' : 'application/json',
         },
@@ -49,7 +51,7 @@ async function handleSignin(){
     const username = document.getElementById("floatingId").value
     const password = document.getElementById("floatingPassword").value
 
-    const response = await fetch('http://127.0.0.1:8000/user/api/token/', {
+    const response = await fetch(`${backend_base_url}/user/api/token/`, {
         headers: {
             'content-type' : 'application/json',
         },
@@ -73,4 +75,13 @@ async function handleSignin(){
 
     // localStorage.setItem("payload", jsonPayload);
     location.href = "index.html";
+}
+
+// 로그아웃
+async function handleLogout() {
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    localStorage.removeItem("payload")
+    alert("로그아웃되었습니다.")
+    location.reload()
 }
