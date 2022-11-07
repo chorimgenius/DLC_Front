@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #000;
+}
+
+#wrapper {
+  width: 100%;
+  max-width: 964px;
+  position: relative;
+}
+
+#carousel {
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+#carousel::-webkit-scrollbar {
+  height: 0;
+}
+
+#prev,
+#next {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: white;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  position: absolute;
+}
+
+#prev {
+  top: 50%;
+  left: 0;
+  transform: translate(50%, -50%);
+  display: none;
+}
+
+#next {
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+#content {
+  display: grid;
+  grid-gap: 16px;
+  grid-auto-flow: column;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.item {
+  width: 180px;
+  height: 180px;
+  background: black;
+}
+
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="carousel">
+        <div id="content">
+          <img
+            class="item"
+            src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            class="item"
+            src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
+            class="item"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
+            class="item"
+          />
+        </div>
+      </div>
+      <button id="prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+        </svg>
+      </button>
+      <button id="next">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+        </svg>
+      </button>
+    </div>
+  </body>
+  <script>
+    const gap = 16;
+
+const carousel = document.getElementById("carousel"),
+  content = document.getElementById("content"),
+  next = document.getElementById("next"),
+  prev = document.getElementById("prev");
+
+next.addEventListener("click", e => {
+  carousel.scrollBy(width + gap, 0);
+  if (carousel.scrollWidth !== 0) {
+    prev.style.display = "flex";
+  }
+  if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "none";
+  }
+});
+prev.addEventListener("click", e => {
+  carousel.scrollBy(-(width + gap), 0);
+  if (carousel.scrollLeft - width - gap <= 0) {
+    prev.style.display = "none";
+  }
+  if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "flex";
+  }
+});
+
+let width = carousel.offsetWidth;
+window.addEventListener("resize", e => (width = carousel.offsetWidth));
+
+  </script>
+</html>
