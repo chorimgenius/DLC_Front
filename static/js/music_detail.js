@@ -1,6 +1,7 @@
 // window.onload = ()=>{
 //     console.log("로딩되었음")
 // }
+let liked = false
 
 const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
@@ -22,8 +23,7 @@ window.onload = async function loadMusic(){
     console.log(typeof parseInt(id))
 
     const response = await fetch('http://127.0.0.1:8000/music/'+parseInt(id), {method:'GET'})
-    ///"GET /music/null/ HTTP/1.1" 404 3151  "GET /music/NaN HTTP/1.1" 404 3145
-    // + ${id} + ''
+
     response_json = await response.json()
 
     console.log(response_json) // ƒ json() { [native code] }
@@ -50,16 +50,104 @@ window.onload = async function loadMusic(){
 
     music_album.innerText = response_json.album
 
-  
+    // response_json.forEach(element => {
+    //     console.log(elemnet.name)
+    //     const newMusic = document.createElement("div")
+    //     const newMusic2 = '<div class=music_list>${elment.name}</div>'
+    //     musics.insertAdjacentHTML("music_list", newMusic2)
 
-    response_json.forEach(element => {
-        console.log(elemnet.name)
-        const newMusic = document.createElement("div")
-        const newMusic2 = '<div class=music_list>${elment.name}</div>'
-        musics.insertAdjacentHTML("music_list", newMusic2)
-
-    });
+//     });
 }
+
+// 여기에 좋아요 function 작성
+async function likeMusic() {
+    const urlStr = window.location.href;
+    console.log(urlStr)
+
+    const url = new URL(urlStr);
+
+    const urlParams = url.searchParams;
+
+    const id = urlParams.get('id')
+    console.log(id)
+    const likeMusic = document.getElementById('like_button')
+    likeMusic.classList.toggle("fa-thumbs-down");
+
+
+    if(!liked){
+        const response = await postLike(id)
+        console.log(response)
+        console.log("좋아요 실행")
+        liked = true
+        
+    }else{
+        console.log("좋아요 취소")
+        liked = false
+    }
+}
+
+
+async function postLike(id){
+    const response = await fetch('http://127.0.0.1:8000/music/' +parseInt(id) +'/like/',{
+        headers:{
+            'Authorization':localStorage.getItem("token")},
+        method :'POST',
+    }
+    )
+
+    if (response.status ==200){
+        response_json = await response_json()
+        return response_json
+    }else{
+        alert(response.status)
+    }
+}
+
+
+
+// 좋아요 취소 fuction 작성
+
+async function deleteLike(music_id){
+    const response = await fetch('http://127.0.0.1:8000/music/'+parseInt(id) + 'like/', {
+        headers: {
+            'Authoriztion':localStorage.getItem("token")},
+            mehtod:'DELETE',
+    }
+    
+    )
+
+    if (response.status ==200){
+        response_json = await response.json()
+        return response_json
+    }else{
+        alert(response.status)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // async function Music() {
 //     const payload = localStorage.getItem("payload");
@@ -81,24 +169,24 @@ window.onload = async function loadMusic(){
 
 
 
-function search(){
-    $('#nav-search').show()
-    $('#nav-main').hide()
-}
-function close_search(){
-    $('#nav-search').hide()
-    $('#nav-main').show()
-}
+// function search(){
+//     $('#nav-search').show()
+//     $('#nav-main').hide()
+// }
+// function close_search(){
+//     $('#nav-search').hide()
+//     $('#nav-main').show()
+// }
 
-$('html').click(function(e) {   
-    if(!$(e.target).hasClass("area")) {
-        $('#nav-search').hide()
-        $('#nav-main').show()
-    }
-});  
-document.addEventListener('DOMContentLoaded', function() {
-const likeButton = document.querySelector('.like-button');
-likeButton.addEventListener('click', () => { 
-likeButton.classList.toggle('selected');
-});
-});
+// $('html').click(function(e) {   
+//     if(!$(e.target).hasClass("area")) {
+//         $('#nav-search').hide()
+//         $('#nav-main').show()
+//     }
+// });  
+// document.addEventListener('DOMContentLoaded', function() {
+// const likeButton = document.querySelector('.like-button');
+// likeButton.addEventListener('click', () => { 
+// likeButton.classList.toggle('selected');
+// });
+// });
