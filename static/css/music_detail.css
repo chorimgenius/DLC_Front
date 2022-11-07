@@ -1,0 +1,204 @@
+
+body {
+font-family: Helvetica;
+background: #111111;
+color: #E6D8D7;
+text-align: center;
+}
+
+h1 { color: #8A5956; text-align: center;
+}
+
+h2 { color: red; text-align: center;
+}
+
+ol {text-align: center;
+}
+
+img {
+border: 6px solid #111111;
+}
+
+iframe {
+border: 6px solid #8A5956;
+}
+.navlabel{
+padding-left: 30px;
+padding-right: 30px;
+color:gray;
+}
+.navstyle{
+position: fixed;
+width: 100%; 
+z-index: 999;
+}
+.navcontainer{
+justify-content: space-between;
+flex-wrap: nowrap; 
+min-width: 1000px;
+}
+.song-container{
+display: flex; 
+flex-direction:column; 
+padding-left: 100px;
+padding-right: 100px;
+padding-top: 60px; 
+background-color: bisque;
+}
+.song-container-head{
+display: flex; 
+flex-direction: row;
+text-align: center; 
+justify-content: space-between; 
+background-color:green
+}
+.page-button{
+width:50px; 
+height:80%; 
+margin-top:5%;
+}
+.song-list-container{
+display: flex; 
+flex-direction:row; 
+flex-wrap: wrap; 
+height: 300px; 
+background-color:aqua;
+}
+.song-list-container-item{
+flex:1 1 40%;
+max-width: 47%;
+align-self: center; 
+flex-grow:1; 
+margin:10px;
+}
+
+.user-comment{
+width:70vw;
+margin:0 auto;
+margin-bottom:100px;
+}
+.comments-section img {
+margin-top: 0px;
+width: 60px;
+}
+
+.comments-section p {
+line-height: 15px;
+margin: 0 auto 5px;
+float: left;
+}
+
+.comments-section .comment-author {
+font-weight: 600;
+font-size: 17px;
+letter-spacing: 0.5px;
+color: red;
+}
+
+.comments-section .comment-time {
+font-size: 11px;
+margin-left: 10px;
+color: #a7a5a5;
+border-bottom: 1px solid #ddd;
+}
+
+.comments-section .comment-content {
+font-size: 16px;
+font-weight: 100;
+padding-bottom: 0px;
+line-height: 25px;
+letter-spacing: 1px;
+color: #888888;
+}
+
+.comments-section .comment-post-reply .comment-content,
+.comments-section .comment-post-reply .comment-author {
+color: #888888; }
+
+.comments-section textarea {
+width: 100%;
+height: 80px;
+border: 1px solid #ccccccad;
+border-radius: 4px;
+padding: 10px; }
+.comment-like-unlike span i{
+font-size: 18px;
+color: #547ef89e;
+cursor: pointer;
+margin-right: 10px;
+width: 30px;
+height: 25px;
+text-align: center;
+line-height: 25px;
+}
+.comment-like-unlike span i:hover{
+color: #547ef8;
+transition: 0.3s ease-in-out;
+}
+.comment-post, .comment-post-reply{
+display: flex;
+margin-bottom: 25px;
+}
+.comment-details{
+margin-left: 25px;
+}
+.comment-post-reply{
+margin-left: 85px;
+margin-bottom: 40px;
+}
+.comments-section{
+padding-top: 40px;
+border-top: 1px solid #cccccc8a;
+}
+.comments-section .btn--blue {
+-webkit-box-shadow: 0 3px 32px rgba(255, 0, 0, 0.54);
+box-shadow: 0 3px 32px rgba(255, 0, 0, 0.54);
+background-color: red;
+padding: 0 40px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+height: 50px;
+line-height: 50px;
+color: whitesmoke;
+font-size: 16px;
+display: inline-block;
+border: none;
+font-family: 'Catamaran', sans-serif;
+font-weight: 400;
+text-decoration:none;
+margin-top:10px;
+}
+.like-button {
+color: #888;
+font-size: 2em;
+border: 2px solid 6px;
+line-height: 1.5em;
+box-shadow: 0 0.25em 1em -0.25em;
+cursor: pointer;
+transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+margin: 0.5em 0;
+border-color: white;
+border-radius: 10px;
+}
+
+.like-button:hover {
+color: indianred;
+}
+
+.like-button:active {
+transform: scale(0.55);
+}
+
+.like-button.selected {
+color: white;
+background-color: red;
+border-color: rgb(217, 17, 17);
+}
+
+.heart-icon {
+display: inline-block;
+fill: currentColor;
+width: 0.8em;
+height: 0.8em;
+margin-right: 0.2em;
+}
