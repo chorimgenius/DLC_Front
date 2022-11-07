@@ -9,253 +9,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-    <style>
-            body {
-    font-family: Helvetica;
-    background: #111111;
-    color: #E6D8D7;
-    text-align: center;
-    }
-
-    h1 { color: #8A5956; text-align: center;
-    }
-
-    h2 { color: red; text-align: center;
-    }
-
-    ol {text-align: center;
-    }
-
-    img {
-    border: 6px solid #111111;
-    }
-
-    iframe {
-    border: 6px solid #8A5956;
-    }
-        .navlabel{
-            padding-left: 30px;
-            padding-right: 30px;
-            color:gray;
-        }
-        .navstyle{
-            position: fixed;
-            width: 100%; 
-            z-index: 999;
-        }
-        .navcontainer{
-            justify-content: space-between;
-            flex-wrap: nowrap; 
-            min-width: 1000px;
-        }
-        .song-container{
-            display: flex; 
-            flex-direction:column; 
-            padding-left: 100px;
-            padding-right: 100px;
-            padding-top: 60px; 
-            background-color: bisque;
-        }
-        .song-container-head{
-            display: flex; 
-            flex-direction: row;
-            text-align: center; 
-            justify-content: space-between; 
-            background-color:green
-        }
-        .page-button{
-            width:50px; 
-            height:80%; 
-            margin-top:5%;
-        }
-        .song-list-container{
-            display: flex; 
-            flex-direction:row; 
-            flex-wrap: wrap; 
-            height: 300px; 
-            background-color:aqua;
-        }
-        .song-list-container-item{
-            flex:1 1 40%;
-            max-width: 47%;
-            align-self: center; 
-            flex-grow:1; 
-            margin:10px;
-        }
-        
-        .user-comment{
-  width:70vw;
-  margin:0 auto;
-  margin-bottom:100px;
-}
-.comments-section img {
-  margin-top: 0px;
-  width: 60px;
-}
-
-.comments-section p {
-  line-height: 15px;
-margin: 0 auto 5px;
-float: left;
-}
-
-.comments-section .comment-author {
-  font-weight: 600;
-font-size: 17px;
-letter-spacing: 0.5px;
-color: red;
- }
-
-.comments-section .comment-time {
-  font-size: 11px;
-    margin-left: 10px;
-    color: #a7a5a5;
-    border-bottom: 1px solid #ddd;
-  }
-
-.comments-section .comment-content {
-  font-size: 16px;
-  font-weight: 100;
-  padding-bottom: 0px;
-  line-height: 25px;
-  letter-spacing: 1px;
-      color: #888888;
-}
-
-.comments-section .comment-post-reply .comment-content,
-.comments-section .comment-post-reply .comment-author {
-  color: #888888; }
-
-.comments-section textarea {
-  width: 100%;
-  height: 80px;
-  border: 1px solid #ccccccad;
-  border-radius: 4px;
-  padding: 10px; }
-.comment-like-unlike span i{
-  font-size: 18px;
-    color: #547ef89e;
-    cursor: pointer;
-    margin-right: 10px;
-    width: 30px;
-    height: 25px;
-    text-align: center;
-    line-height: 25px;
-}
-.comment-like-unlike span i:hover{
-  color: #547ef8;
-  transition: 0.3s ease-in-out;
-}
-.comment-post, .comment-post-reply{
-  display: flex;
-  margin-bottom: 25px;
-}
-.comment-details{
-  margin-left: 25px;
-}
-.comment-post-reply{
-  margin-left: 85px;
-  margin-bottom: 40px;
-}
-.comments-section{
-  padding-top: 40px;
-    border-top: 1px solid #cccccc8a;
-}
-.comments-section .btn--blue {
-    -webkit-box-shadow: 0 3px 32px rgba(255, 0, 0, 0.54);
-    box-shadow: 0 3px 32px rgba(255, 0, 0, 0.54);
-    background-color: red;
-    padding: 0 40px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    height: 50px;
-    line-height: 50px;
-    color: whitesmoke;
-    font-size: 16px;
-    display: inline-block;
-    border: none;
-    font-family: 'Catamaran', sans-serif;
-    font-weight: 400;
-  text-decoration:none;
-  margin-top:10px;
-}
-.like-button {
-    color: #888;
-    font-size: 2em;
-    border: 2px solid 6px;
-    line-height: 1.5em;
-    box-shadow: 0 0.25em 1em -0.25em;
-    cursor: pointer;
-    transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
-    margin: 0.5em 0;
-    border-color: white;
-    border-radius: 10px;
-}
-
-.like-button:hover {
-    color: indianred;
-}
-
-.like-button:active {
-    transform: scale(0.55);
-}
-
-.like-button.selected {
-    color: white;
-    background-color: red;
-    border-color: rgb(217, 17, 17);
-}
-
-.heart-icon {
-    display: inline-block;
-    fill: currentColor;
-    width: 0.8em;
-    height: 0.8em;
-    margin-right: 0.2em;
-}
-
-
-    </style>
-    <script>
-        function search(){
-            $('#nav-search').show()
-            $('#nav-main').hide()
-        }
-        function close_search(){
-            $('#nav-search').hide()
-            $('#nav-main').show()
-        }
-
-        $('html').click(function(e) {   
-            if(!$(e.target).hasClass("area")) {
-                $('#nav-search').hide()
-                $('#nav-main').show()
-            }
-        });  
-        document.addEventListener('DOMContentLoaded', function() {
-    const likeButton = document.querySelector('.like-button');
-    likeButton.addEventListener('click', () => {
-        likeButton.classList.toggle('selected');
-    });
-});
-
-    </script>
+            crossorigin="anonymous"></script> 
+    <link href="../static/css/music_detail.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
     <div>
         <br>
         </div>
         </div>
         <br>
-        <img width="560" height="560" src= "https://pbs.twimg.com/media/EefVnznX0AA7u2A?format=jpg&name=medium">
+        <img width="560" height="560" id="music_image" src= "https://pbs.twimg.com/media/EefVnznX0AA7u2A?format=jpg&name=medium">
         <br>
-        <div>
-        <h2>{{ Music.name }}</h2>
-        <h3>{{ Music.year }}</h3>
-        <h4>{{ Music.Artist }}</h4>
-        <button type="button" class="like-button">
+        <div class = "music_list">
+          <h2 type="text" class="h2" id="music_name">음악 이름</h2>
+          <h3 type="text" class="h3" id="music_year">노래 연도</h3>
+          <h3 type="text" class="h3" id="artist_name">가수 이름</h3>
+          <h3 type="text" class="h3" id="music_album">앨범명</h3>
+
+        <button type="button" class="like-button" id="like_button">
             <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z"/></svg>
             Like
           </button>
@@ -296,3 +67,4 @@ color: red;
 </div>
 </body>
 </html>
+<script src="static/js/music_detail.js"></script>
