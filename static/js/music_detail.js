@@ -1,17 +1,10 @@
-// window.onload = ()=>{
-//     console.log("로딩되었음")
-// }
 let liked = false
-
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
-
-//127.0.0.1/:5500/music_detail.html?id=1/
 
 window.onload = async function loadMusic(){
 
+    
+
     const urlStr = window.location.href;
-    console.log(urlStr)
 
     const url = new URL(urlStr);
 
@@ -19,64 +12,73 @@ window.onload = async function loadMusic(){
 
     const id = urlParams.get('id')
 
-
-    console.log(typeof parseInt(id))
-
-    const response = await fetch('http://127.0.0.1:8000/music/'+parseInt(id), {method:'GET'})
+    const response = await fetch('http://127.0.0.1:8000/music/'+parseInt(id), {
+        method:'GET',
+        headers:{
+            "Authorization": localStorage.getItem("access")
+        }
+    })
 
     response_json = await response.json()
-
-    console.log(response_json) // ƒ json() { [native code] }
+    if(response_json[1] == 1){
+        const likeButton = document.querySelector('.like-button');
+        likeButton.classList.toggle('selected');
+    }
 
     const music_image = document.getElementById('music_image')
 
-    console.log(response_json.music_image)
-
-    music_image.src=response_json.music_image
+    music_image.src=response_json[0].music_image
 
     const music_name = document.getElementById('music_name')
 
-    music_name.innerText = response_json.name
+    music_name.innerText = response_json[0].name
 
     const music_year = document.getElementById('music_year')
 
-    music_year.innerText = response_json.year
+    music_year.innerText = response_json[0].year
 
     const artist_name = document.getElementById('artist_name')
 
-    artist_name.innerText = response_json.artists
+    artist_name.innerText = response_json[0].artists
 
     const music_album = document.getElementById('music_album')
 
-    music_album.innerText = response_json.album
+    music_album.innerText = response_json[0].album
 
-    // response_json.forEach(element => {
-    //     console.log(elemnet.name)
-    //     const newMusic = document.createElement("div")
-    //     const newMusic2 = '<div class=music_list>${elment.name}</div>'
-    //     musics.insertAdjacentHTML("music_list", newMusic2)
+    review_list = response_json[2]
 
-//     });
+    const comments = document.getElementById('comment_list');
+    
+    review_list.forEach(element => { 
+        const review = `<div class="comment-post">
+                                <div class="comment-img"><img src="http://127.0.0.1:8000/media/default_profile.png"></div>
+                                <div class="comment-details">
+                                    <p><span class="comment-author">${element.review_user}</span><span class="comment-time"></span></p>
+                                <div>
+                                    <p class="comment-content">${element.content}</p>
+                                </div>
+                            </div>`
+        comments.insertAdjacentHTML("beforeend",review)
+    });
+
 }
 
-// 여기에 좋아요 function 작성
+// 좋아요 function
 async function likeMusic() {
     const urlStr = window.location.href;
-    console.log(urlStr)
 
     const url = new URL(urlStr);
 
     const urlParams = url.searchParams;
 
     const id = urlParams.get('id')
-    console.log(id)
+
     const likeMusic = document.getElementById('like_button')
     likeMusic.classList.toggle("fa-thumbs-down");
 
 
     if(!liked){
         const response = await postLike(id)
-        console.log(response)
         console.log("좋아요 실행")
         liked = true
         
@@ -85,78 +87,8 @@ async function likeMusic() {
         liked = false
     }
 }
-
-
-async function postLike(id){
-    const response = await fetch('http://127.0.0.1:8000/music/' +parseInt(id) +'/like/',{
-        headers:{
-            'Authorization':localStorage.getItem("token")},
-        method :'POST',
-    }
-    )
-
-    if (response.status ==200){
-        response_json = await response_json()
-        return response_json
-    }else{
-        alert(response.status)
-    }
-}
-
-
-
-// 좋아요 취소 fuction 작성
-
-async function deleteLike(music_id){
-    const response = await fetch('http://127.0.0.1:8000/music/'+parseInt(id) + 'like/', {
-        headers: {
-            'Authoriztion':localStorage.getItem("token")},
-            mehtod:'DELETE',
-    }
-    
-    )
-
-    if (response.status ==200){
-        response_json = await response.json()
-        return response_json
-    }else{
-        alert(response.status)
-    }
-}
-
-
-
-// async function Music() {
-//     const payload = localStorage.getItem("payload");
-//     const payload_parse = JSON.parse(payload)
-//     const user_id = payload_parse.music_id
-//     const response = await fetch(`${backend_base_url}/music/${music_id}/`, {
-//         method: 'GET',
-//     })
-//     const data = await response.json();
-//     console.log(data)
-//     const username = document.getElementById("username")
-//     username.innerText = payload_parse.username
-//     const email = document.getElementById("email")
-//     email.innerText = data.email
-//     const bio = document.getElementById("bio")
-//     bio.innerText = data.bio
-// }
-
-
-
-
-// function search(){
-//     $('#nav-search').show()
-//     $('#nav-main').hide()
-// }
-// function close_search(){
-//     $('#nav-search').hide()
-//     $('#nav-main').show()
-// }
 async function review_write(){
-    const urlStr = window.location.href;
-    console.log(urlStr)
+    const urlStr = window.location.href;)
 
     const url = new URL(urlStr);
 
@@ -164,37 +96,76 @@ async function review_write(){
 
     const id = urlParams.get('id')
 
-    const response = await fetch('http://127.0.0.1:8000/'+parseInt(id)+'/review/', {method:'POST'})
+    const content_review = document.getElementById('review_content').value
+
+    const response = await fetch('http://127.0.0.1:8000/review/'+parseInt(id)+'/review/', {
+        method:'POST',
+        headers:{
+            "Authorization": localStorage.getItem("access"),
+            'content-type' : 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            "content": content_review
+        })
+    })
 
     response_json = await response.json()
     
-    user = response_json.user 
-    contents = response_json.contents  
-    image = response_json.image 
-    rank = response_json.rank
+    user = response_json.review_user
+    content = response_json.content  
+    image = response_json.image
+
+    const comments = document.getElementById('comment_list');
 
     const comment = `<div class="comment-post">
-                        <div class="comment-img"><img src="${user.image}"/></div>
+                        <div class="comment-img"><img src="http://127.0.0.1:8000/media/default_profile.png/"></div>
                         <div class="comment-details">
-                            <p><span class="comment-author">${user.username}</span><span class="comment-time">${rank}</span></p>
+                            <p><span class="comment-author">${user}</span><span class="comment-time"></span></p>
                         <div>
-                            <p class="comment-content">${contents}</p>
+                            <p class="comment-content">${content}</p>
                         </div>
                     </div>`
 
-    comments.insertAdjacentHTML("beforeend",comment)
+    comments.insertAdjacentHTML("beforeend",comment) 
 }
 
-// $('html').click(function(e) {   
-//     if(!$(e.target).hasClass("area")) {
-//         $('#nav-search').hide()
-//         $('#nav-main').show()
-//     }
-// });  
-// document.addEventListener('DOMContentLoaded', function() {
-// const likeButton = document.querySelector('.like-button');
-// likeButton.addEventListener('click', () => { 
-// likeButton.classList.toggle('selected');
-// });
-// });
 
+
+
+$('html').click(function(e) {   
+    if(!$(e.target).hasClass("area")) {
+        $('#nav-search').hide()
+        $('#nav-main').show()
+    }
+});  
+document.addEventListener('DOMContentLoaded', function() {
+
+    const urlStr = window.location.href;
+
+    const url = new URL(urlStr);
+
+    const urlParams = url.searchParams;
+
+    const id = urlParams.get('id')
+
+    const likeButton = document.querySelector('.like-button');
+    likeButton.addEventListener('click', () => { 
+        fetch('http://127.0.0.1:8000/music/' +parseInt(id) +'/like/',{
+            headers:{
+                'Authorization':localStorage.getItem("access")},
+            method :'POST',
+        })   
+        likeButton.classList.toggle('selected');
+    });
+});
+
+function profile(){
+    location.href="profile.html"
+  }
+
+function index(){
+    location.href="index.html"
+  }
+
+handleLogout()

@@ -12,8 +12,40 @@
             crossorigin="anonymous"></script> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="../static/css/music_detail.css" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+   <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark navstyle" >
+          <div class="container-fluid navcontainer">
+              <div class="logo">
+                  <a href="index.html"><i class="fab fa-youtube" style="color: red"></i></a>
+                  <span class="title">DlcMusic</span>
+              </div>
+              <div id="nav-search" style="display:none">
+                <div class="wrap">
+                  <div class="search">
+                     <input type="text" class="searchTerm" id="search-music" placeholder="What are you looking for?">
+                     <button type="submit" class="searchButton">
+                       <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+               </div>
+              </div>
+              <div id="nav-main" class="me-2">
+                  <label class="navlabel" href="index.html" onclick="index()">홈</label>
+                  <label class="navlabel" href="profile.html" onclick="profile()">보관함</label>
+                  <label class="navlabel area" onclick="search()">검색</label>
+              </div>
+  
+              <div style="display: flex">
+                  <a href="signin.html" style="color: white">
+                      <span class="material-icons" style="padding-right: 10px" onclick="handleLogout()"> Logout</span>
+                  </a>
+              </div>
+          </div>
+      </nav>
+  </header>
     <div>
         <br>
         </div>
@@ -26,49 +58,25 @@
           <h3 type="text" class="h3" id="music_year">노래 연도</h3>
           <h3 type="text" class="h3" id="artist_name">가수 이름</h3>
           <h3 type="text" class="h3" id="music_album">앨범명</h3>
-<!-- 
+
         <button type="button" class="like-button" id="like_button">
             <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z"/></svg>
             Like
-          </button> -->
+          </button>
 
         <div class="user-comment">
             <div class="comments-section">
                <div id="comment_list">
-                  <div class="comment-post">
-                     <div class="comment-img"><img src="https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png"/></div>
-                     <div class="comment-details">
-                        <p><span class="comment-author">Comment 달은 유저</span><span class="comment-time">5 minutes ago</span></p>
-                        <div>
-                        <p class="comment-content">노래가 너무 좋습니다.</p>
-                     </div>
-                        <div class="comment-like-unlike">
-                           <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
-                           <span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></span>
-                           <span><i class="fa fa-reply" aria-hidden="true"></i></span>
-                        </div>
-                     </div>
-                  </div>
+
                </div>
                <div class="comment-add">
                   <div class="field-comment">
-                     <input id="review_rank" type="number"></input>
                      <textarea id="review_content" rows="4" cols="50"></textarea>
-                     <button onclick="review_write" class="btn btn--blue btn--medium pull-right" href="#">Music Comment</button>
+                     <button onclick="review_write()" class="btn btn--blue btn--medium pull-right">Music Comment</button>
                   </div>
                </div>
             </div>
-         </div>
-         <i onclick="likeMusic()" id="like_button" class="fa fa-thumbs-up fa-thumbs-down"></i>
-    
-
-
-    
-
-
-
-            
-            
+         </div>   
 </div>
 </body>
 </html>

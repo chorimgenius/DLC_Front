@@ -1,39 +1,22 @@
 * {
     color: white;
-    background-color: black;
+    /* background-color: #212529; */
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
-    border-bottom: 1px solid white;
-}
-
-header .logo {
+.navlabel{
     padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-header .logo i {
-    color: red;
-    font-size: 25px;
-}
-
-header .logo span {
-    font-size: 25px;
-}
-
-header button {
-    background-color: black;
     padding-right: 30px;
+    color:gray;
 }
-
-header button a {
-    font-size: 25px;
-    color: white;
-    text-decoration: none;
+.navstyle{
+    position: fixed;
+    width: 100%; 
+    z-index: 999;
+}
+.navcontainer{
+    justify-content: space-between;
+    flex-wrap: nowrap; 
+    min-width: 1000px;
 }
 
 .profile{
@@ -42,6 +25,7 @@ header button a {
     align-items: center;
     border-bottom: 1px solid white;
     padding: 3.5rem 0;
+    background-color: #111111;
 }
 
 .img_area{
@@ -71,7 +55,6 @@ header button a {
 
 .profile-user-settings,
 .profile-stats,
-.profile-email,
 .profile-bio {
     float: center;
 }
@@ -92,7 +75,7 @@ header button a {
     line-height: 1.8;
     border: 0.1rem solid #f80101;
     background-color: red;
-    border-radius: 0.3rem;
+    border-radius: 0.3red;
     padding: 0 2.4rem;
     margin-left: 2rem;
 }
@@ -104,10 +87,6 @@ header button a {
 
 .profile-stats {
     margin-top: 2rem;
-}
-
-.profile-stats ul{
-    padding: 0px;
 }
 
 .profile-stats li {
@@ -122,13 +101,6 @@ header button a {
     margin-right: 0;
 }
 
-.profile-email {
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-top: 2rem;
-}
-
 .profile-bio {
     font-size: 1.6rem;
     font-weight: 400;
@@ -141,31 +113,14 @@ header button a {
     font-weight: 600;
 }
 
-.song-container{
-    display: flex; 
-    flex-direction:column; 
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-top: 60px; 
+.content-list {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    margin: 10px;
+    box-sizing: border-box;
+    background-color: #111111;
 }
-.song-container-head{
-    display: flex; 
-    flex-direction: row;
-    text-align: center; 
-    justify-content: space-between; 
-}
-.page-button{
-    width:50px; 
-    height:80%; 
-    margin-top:5%;
-}
-/* .song-list-container{
-    display: flex; 
-    flex-direction:row; 
-    flex-wrap: wrap; 
-    height: 300px; 
-    background-color:aqua;
-} */
 .song-list-container-item{
     flex:1 1 40%;
     max-width: 47%;
@@ -179,66 +134,5 @@ header button a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #000;
-}
-
-#wrapper {
-    width: 100%;
-    max-width: 964px;
-    position: relative;
-}
-
-#carousel {
-    overflow: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-}
-
-#carousel::-webkit-scrollbar {
-    height: 0;
-}
-/* #next {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    background: white;
-    border: none;
-    padding: 8px;
-    border-radius: 50%;
-    outline: 0;
-    cursor: pointer;
-    position: absolute;
-}
-
-#prev {
-    top: 50%;
-    left: 0;
-    transform: translate(50%, -50%);
-    display: none;
-} */
-
-#next {
-    top: 50%;
-    right: 0;
-    transform: translate(-50%, -50%);
-}
-
-#content {
-    display: grid;
-    grid-gap: 16px;
-    grid-auto-flow: column;
-    margin: 10px;
-    box-sizing: border-box;
-}
-
-.item {
-    width: 180px;
-    height: 180px;
-    background: green;
-}
-
-.btn-primary {
-    color: white;
-    background-color: #f80101;
-    border: 0.1rem solid #f80101;
+    background-color: #111111;
 }

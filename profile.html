@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +10,7 @@
 
     <!-- CSS -->
     <link href="../static/css/profile.css" rel="stylesheet" type="text/css" />
+    
     <!-- js -->
     <script src="../static/js/api.js"></script>
     <script src="../static/js/profile.js"></script>
@@ -25,13 +25,35 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">
-            <i class="fab fa-youtube"></i>
-            <span class="title">DlcMusic</span>
-        </div>
-        <button class="logout">
-            <a href="signin.html" onclick="handleLogout()">Logout</a>
-        </button>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navstyle" >
+            <div class="container-fluid navcontainer">
+                <div class="logo">
+                    <a href="index.html"><i class="fab fa-youtube" style="color: red"></i></a>
+                    <span class="title">DlcMusic</span>
+                </div>
+                <div id="nav-search" style="display:none">
+                  <div class="wrap">
+                    <div class="search">
+                       <input type="text" class="searchTerm" id="search-music" placeholder="What are you looking for?">
+                       <button type="submit" class="searchButton">
+                         <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                 </div>
+                </div>
+                <div id="nav-main" class="me-2">
+                    <label class="navlabel" href="index.html" onclick="index()">홈</label>
+                    <label class="navlabel" href="profile.html" onclick="profile()">보관함</label>
+                    <label class="navlabel area" onclick="search()">검색</label>
+                </div>
+    
+                <div style="display: flex">
+                    <a href="signin.html" style="color: white">
+                        <span class="material-icons" style="padding-right: 10px" onclick="handleLogout()"> Logout</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
     </header>
     <!-- Section -->
     <section class="profile">
@@ -58,112 +80,32 @@
 
         </div>
         <div class="profile-email" id="email"></div>
-        <div class="profile-bio" id="bio"></div>
+        <div class="profile-bio" id="bio"></div> 
     </section>
-    <div class="song-container">
-        <div class="song-container-head">
+    
+    <div class="song-container" style="background-color: #111111;">
+        <div class="song-container-head" style="padding-left: 10px;">
             <div>
-                <div><span id="username2"></span>님의 추천곡 리스트</div>
-                <div style="text-align:left;">
-                    <h3>좋아요 목록</h3>
+                <div style="text-align:left; background-color: #111111;">
+                    <h3 style="padding-left: 100px; margin-top: 10px;">좋아요 노래</h3>
                 </div>
             </div>
             <div>
             </div>
             <div>
-                <button class="page-button" id="carousel-prev">왼</button>
-                <button class="page-button" id="carousel-next">오</button>
             </div>
         </div>
         <div class="song-list-container" id="song-list-container">
-
+    
             <div id="wrapper">
-                <div id="carousel">
-                    <div id="content">
-                        <div style="display:flex;flex-direction: column;">
-                            <div>
-                                <img class="item"
-                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
-                            </div>
-                            <div>
-                                <p style="color:white">sdklfj</p>
-                            </div>
-
-                        </div>
-                        <div style="display:flex;flex-direction: column;">
-                            <div>
-                                <img class="item"
-                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
-                            </div>
-                            <div>
-                                <p style="color:white">노래제목</p>
-                            </div>
-                            <div>
-                                <p style="color:white">가수</p>
-                            </div>
-
-                        </div>
-                        <div style="display:flex;flex-direction: column;">
-                            <div>
-                                <img class="item"
-                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
-                            </div>
-                            <div>
-                                <p style="color:white">sdklfj</p>
-                            </div>
-
-                        </div>
-                        <div style="display:flex;flex-direction: column;">
-                            <div>
-                                <img class="item"
-                                    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
-                            </div>
-                            <div>
-                                <p style="color:white">sdklfj</p>
-                            </div>
-
-                        </div>
-                        <img src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
-                            class="item" />
-                        <img class="item"
-                            src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj" />
-                        <img src="https://lh3.googleusercontent.com/e2WxnnYi-F9oN4e0HdLosbq8nlxezfIlxAze2Ba0zE2JR8Es7j-4tNtXc9atwL51FHpaTMtDgmc=w544-h544-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/u6ldIRFJNC856cVGIRsj8It7kz8_0WSTsbdJEOdwjkzZg0lLnn2fFFdhdkCf85HG9O0s2Ak72g=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/nlaN4QEwrQivvVocTsTmksMAaLdiOYRI6fqWgEvr8HeszJdwyOLWSMtVZQkFP_jIO47g-sbZ=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/ivQK-VEDrumpUKopbgrZKKIP70_i0B0r1LLa7PM1ugqtWJcGDRt8yxndLAVKZn3k5djl6_SS2w=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/mH0AFUazs5cUFTMGmXW-yCIhqSgJHbYqt08OjMgON0-x_Q5nsxhOzVwMHyZJ1e3dziP_ja7_=w544-h544-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/H3yFco2fMxBxlQ7wZ7-_OUA8zO8hmqTU9Fik9_lwA6L5pCP_JcCI0OR2XmdAUPzZS_XsayPDnw=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/URcwKIhfH3rPoeSfAKfsuKTwZzyNUv_f9TiLL3Nddscv-cufGX3kh6G8FzkJHzvgWrxKMu_Y36A=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/BkARURW3Om0LVqlubLu1ziGrfKJrkYpSLEQflgH29lmTooSvXQjsHaWnwH1srAPlIMyJKjWqFIU=w512-h512-l90-rj"
-                            class="item" />
-                        <img src="https://lh3.googleusercontent.com/JMSMnpSyPX1ZTgodYRg5y98ZeZ5AUMBKf2TMRXD88_i6Qkj6-CwfkqmE0X4THMIPVydnYBNVUg=w512-h512-l90-rj"
-                            class="item" />
-                    </div>
+                <div class="carousel">
+                  <div class="content-list" id="my-content-list">
+                    
+                  </div>
                 </div>
-            </div>
+              </div>
+    
+      
         </div>
     </div>
     <!-- modal -->
@@ -195,5 +137,4 @@
         </div>
     </div>
 </body>
-
 </html>

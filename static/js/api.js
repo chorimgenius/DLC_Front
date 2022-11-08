@@ -7,9 +7,6 @@ async function handleSignup(){
     const password = document.getElementById("floatingPassword").value
     const password2 = document.getElementById("floatingPassword2").value
 
-    // const REGEX_EMAIL = '([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'
-    // const REGEX_PASSWORD = '^(?=.*[\d])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()])[\w\d!@#$%^&*()]{8,16}$'
-
     if (username == '') {
         alert("아이디를 입력해주세요!");
         return 0;
@@ -57,11 +54,9 @@ async function handleSignin(){
         })
     })
 
-    console.log(response)
-
     const response_json = await response.json()
 
-    localStorage.setItem("access", response_json.access);
+    localStorage.setItem("access", "Bearer "+response_json.access);
     localStorage.setItem("refresh", response_json.refresh);
 
     const base64Url = response_json.access.split('.')[1];
@@ -71,7 +66,7 @@ async function handleSignin(){
     }).join(''));
 
     localStorage.setItem("payload", jsonPayload);
-    location.href = "profile.html";
+    location.href = "index.html";
 }
 
 // 로그아웃
@@ -80,7 +75,7 @@ async function handleLogout() {
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     alert("로그아웃되었습니다.")
-    location.reload()
+    location.href = "signin.html";
 }
 
 // 프로필 유저 정보 가져오기
@@ -93,25 +88,47 @@ async function Profile() {
         method: 'GET',
     })
     const data = await response.json();
-    console.log(data)
 
     const username = document.getElementById("username")
-    username.innerText = payload_parse.username
-
-    const username2 = document.getElementById("username2")
-    username2.innerText = payload_parse.username
+    username.innerText = data[0].username
 
     const followers = document.getElementById("followers")
-    followers.innerText = data.followers.length
+    followers.innerText = data[0].followers.length
 
     const followings = document.getElementById("followings")
-    followings.innerText = data.followings.length
+    followings.innerText = data[0].followings.length
 
     const email = document.getElementById("email")
-    email.innerText = data.email
+    email.innerText = data[0].email
 
     const bio = document.getElementById("bio")
-    bio.innerText = data.bio
+    bio.innerText = data[0].bio
+
+    musics = data[1]
+
+    const my_container = document.getElementById('my-content-list')
+
+
+    musics.forEach(element => {
+        const new_music = `<div id="music-item">
+                                <div>
+                                <img
+                                    class="item"
+                                    src="${element.music_image}" onclick="music_detail(${element.id})"
+                                />
+                                </div>
+                                <div>
+                                <p style="color:white">${element.name}</p>
+                                </div>
+                            
+                            </div>`
+        my_container.insertAdjacentHTML("beforeend",new_music)
+    });
+
+}
+
+function music_detail(id){
+    location.href = "music_detail.html?id="+id;
 }
 
 // 프로필 유저 정보 업데이트
